@@ -40,9 +40,10 @@ public class MainActivity extends Activity {
 
         ANPR.Parameters paramsSdk = new ANPR.Parameters();
         paramsSdk.licenseMode = ANPR.Parameters.LICENSE_MODE_ONLINE;
-        paramsSdk.requestNationality = "HUN";
+        paramsSdk.requestNationality = "ESP";
 
         sdkAnpr.init(paramsSdk);
+
     }
 
     private void startCamera() {
@@ -72,6 +73,9 @@ public class MainActivity extends Activity {
             setContentView(cameraInput.getCameraPreview());
             Result res = cameraInput.init(paramsCamera);
             if (res.code == Result.OK) {
+                ANPR.AnprParameters anprParameters = new ANPR.AnprParameters();
+                anprParameters.detectSquarePlates = 1;
+                cameraInput.setAnprParameters(anprParameters);
                 cameraInput.start();
             }
 
