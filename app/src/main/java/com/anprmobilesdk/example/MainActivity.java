@@ -1,12 +1,14 @@
 package com.anprmobilesdk.example;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 
-import com.anprsystemsltd.sdk.mobile.ANPR;
-import com.anprsystemsltd.sdk.mobile.CameraInput;
-import com.anprsystemsltd.sdk.mobile.Event;
-import com.anprsystemsltd.sdk.mobile.Result;
+import com.anpr.sdk.mobile.ANPR;
+import com.anpr.sdk.mobile.CameraInput;
+import com.anpr.sdk.mobile.Event;
+import com.anpr.sdk.mobile.Result;
+import com.anpr.sdk.mobile.Tools;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -22,6 +24,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Tools.checkPermissions(this, new String[] {android.Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA});
 
         sdkAnpr = new ANPR(context, new ANPR.EventListener() {
 
@@ -40,7 +44,7 @@ public class MainActivity extends Activity {
 
         ANPR.Parameters paramsSdk = new ANPR.Parameters();
         paramsSdk.licenseMode = ANPR.Parameters.LICENSE_MODE_ONLINE;
-        paramsSdk.requestNationality = "IND";
+        paramsSdk.requestNationality = "FIN_Finland";
 
         sdkAnpr.init(paramsSdk);
 
