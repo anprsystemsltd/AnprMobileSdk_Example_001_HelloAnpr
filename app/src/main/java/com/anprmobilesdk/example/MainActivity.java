@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
 
         ANPR.Parameters paramsSdk = new ANPR.Parameters();
         paramsSdk.licenseMode = ANPR.Parameters.LICENSE_MODE_ONLINE;
-        paramsSdk.requestNationality = "FIN_Finland";
+        paramsSdk.requestNationality = "HUN_Hungary";
 
         sdkAnpr.init(paramsSdk);
 
